@@ -4,4 +4,4 @@ authors=["David J. Pearce"]
 version="0.1.0"
 
 [dependencies]
-std="0.2.5"
+std="0.2.6"

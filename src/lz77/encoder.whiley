@@ -125,7 +125,7 @@ ensures 0 <= length && length <= 255:
 
 function write_u8(byte[] bytes, u8 u1) -> byte[]:
     //
-    return append(bytes,integer::toUnsignedByte(u1))
+    return append(bytes,integer::to_unsigned_byte(u1))
 
 
 // NOTE: This is temporary and should be removed.  The reason is it
