@@ -37,7 +37,7 @@ import u8 from std::integer
 //
 // Here, we see the second occurrence "is " is matched against the
 // previous occurrence, and likewise for "his ".
-function compress(byte[] data) -> byte[]:
+public function compress(byte[] data) -> byte[]:
     nat pos = 0
     byte[] output = [0b; 0]
     //

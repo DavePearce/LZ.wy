@@ -17,7 +17,7 @@ import u8 from std::integer
 // relatively naive fashion, whereby the entire generated stream is kept
 // in memory.  In practice, only the sliding window needs to be kept in
 // memory.
-function decompress(byte[] data) -> byte[]:
+public function decompress(byte[] data) -> byte[]:
     byte[] output = [0b;0]
     nat pos = 0
     //
