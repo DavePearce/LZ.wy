@@ -3,8 +3,17 @@ name="lz"
 authors=["David J. Pearce"]
 version="0.1.0"
 
+[build]
+main="tests::main"
+
 [build.whiley]
 verify=true
 
+[check]
+minint=0
+maxint=4
+maxlen=3
+maxdepth=1
+
 [dependencies]
-std="0.2.6"
+std="0.2.7"
