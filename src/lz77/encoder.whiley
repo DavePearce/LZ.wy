@@ -43,9 +43,7 @@ public function compress(byte[] data) -> byte[]:
     //
     // keep going until all data matched
     while pos < |data| where pos >= 0:
-        int offset
-        int len
-        offset,len = findLongestMatch(data,pos)
+        (u8 offset, u8 len) = findLongestMatch(data,pos)
         output = write_u8(output,offset)
         if offset == 0:
             output = append(output,data[pos])
@@ -83,11 +81,11 @@ function findLongestMatch(byte[] data, nat pos) -> (u8 offset, u8 length):
     u8 bestOffset = 0
     u8 bestLen = 0
     // Initialise index to start of sliding window, or start of stream.
-    nat index = math::max(pos - 255,0)
+    nat index = (nat) math::max(pos - 255,0)
     //
     while index < pos where (pos - index) <= 255:
         //
-        int len = match(data,index,pos)
+        u8 len = match(data,index,pos)
         if len > bestLen:
             bestOffset = pos - index
             bestLen = len
@@ -106,11 +104,9 @@ function findLongestMatch(byte[] data, nat pos) -> (u8 offset, u8 length):
 // The algorithm moves each forward until it finds the first non-match
 // character (or we reach the end).  It then returns the length of the
 // match (which in this would be three).
-function match(byte[] data, nat offset, nat end) -> (int length)
+function match(byte[] data, nat offset, nat end) -> (u8 length)
 // Position to search from within sliding window
-requires (end - offset) <= 255
-// Returned match size cannot exceed sliding window
-ensures 0 <= length && length <= 255:
+requires (end - offset) <= 255:
     //
     nat pos = end
     u8 len = 0
