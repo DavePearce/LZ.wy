@@ -5,7 +5,7 @@ version="0.1.0"
 
 [build]
 main="tests::main"
-platforms=["whiley","js"]
+platforms=["whiley","boogie","js"]
 
 [check]
 min=-3
