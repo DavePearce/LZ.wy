@@ -7,4 +7,8 @@ method test_01():
 
 public export method main():
     test_01()
-    
+
+
+function broken(int i) -> (int r)
+ensures r >= 0:
+    return i
