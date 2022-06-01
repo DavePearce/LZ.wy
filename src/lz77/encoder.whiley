@@ -6,12 +6,12 @@ package lz77
  * See: http://en.wikipedia.org/wiki/LZ77_and_LZ78
  */
 import std::ascii
-import std::filesystem
-import std::integer
+import std::fs
+import std::int
 import std::io
 import std::math
-import nat from std::integer
-import u8 from std::integer
+import nat from std::int
+import u8 from std::int
 
 // Compress a given byte stream to produce a potentially shorter
 // stream.  The resulting stream can be viewed as sequence of pairs of
@@ -121,7 +121,7 @@ requires (end - offset) <= 255:
 
 function write_u8(byte[] bytes, u8 u1) -> byte[]:
     //
-    return append(bytes,integer::to_unsigned_byte(u1))
+    return append(bytes,std::int::to_unsigned_byte(u1))
 
 
 // NOTE: This is temporary and should be removed.  The reason is it

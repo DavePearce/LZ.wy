@@ -6,12 +6,12 @@ package lz77
  * See: http://en.wikipedia.org/wiki/LZ77_and_LZ78
  */
 import std::ascii
-import std::filesystem
-import std::integer
+import std::fs
+import std::int
 import std::io
 import std::math
-import nat from std::integer
-import u8 from std::integer
+import nat from std::int
+import u8 from std::int
 
 // Decompress the given compressed bytestream.  This is done in a
 // relatively naive fashion, whereby the entire generated stream is kept
@@ -27,12 +27,12 @@ public function decompress(byte[] data) -> byte[]:
         // NOTE: calculating offset here suboptimal as can test
         // directly against 00000000b, but helps verification as later
         // know that offset != 0.        
-        u8 offset = integer::to_uint(header)
+        u8 offset = std::int::to_uint(header)
         pos = pos + 2 
         if offset == 0:
             output = append(output,item)
         else:
-            u8 len = integer::to_uint(item)
+            u8 len = std::int::to_uint(item)
             // NOTE: start >= 0 not guaranteed.  If negative, we have
             // error case and implementation proceeds producing junk.
             int start = |output| - offset
